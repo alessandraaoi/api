@@ -24,11 +24,13 @@ app.get('/', (req, res) => {
 
 app.use(router)
 
-let corsOptions = {
-    origin: 'http://localhost:3000'
+const corsOption = {
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
 }
 
-corsOptions()
+app.use(cors(corsOption));
 
 app.use((req, res, next) => {
     res.header(
