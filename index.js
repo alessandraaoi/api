@@ -38,17 +38,19 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(cors({ origin: ['http://localhost:3000'] }))
+
+let corsOptions = {
+    origin: 'http://localhost:3000'
+};
+
+corsOptions()
+
 app.get('/', (req, res) => {
     res.json('Haciendo get en /');
 })
 
 app.use(router)
-
-let corsOptions = {
-    origin: '*'
-};
-
-corsOptions()
 
 // Middlewares para gestionar errores
 app.use(( req , res , next  )=>{
