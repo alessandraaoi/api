@@ -24,6 +24,12 @@ app.get('/', (req, res) => {
 
 app.use(router)
 
+let corsOptions = {
+    origin: 'http://localhost:3000'
+}
+
+corsOptions()
+
 app.use((req, res, next) => {
     res.header(
       "Access-Control-Allow-Origin",
