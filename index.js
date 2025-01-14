@@ -24,6 +24,16 @@ app.get('/', (req, res) => {
 
 app.use(router)
 
+app.use((req, res, next) => {
+    res.header(
+      "Access-Control-Allow-Origin",
+      "React app URL"
+    );
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  });
+
 // Middlewares para gestionar errores
 app.use(( req , res , next  )=>{
     let error = new Error()
