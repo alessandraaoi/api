@@ -10,4 +10,4 @@ const connection = mongoose.connection;
 connection.once('open', () => console.log('Connected to Mongo'))
 connection.on('error', (err) => console.log('Error to connect: ' + (err)))
 
-module.exports = db;
+module.exports = db; 
