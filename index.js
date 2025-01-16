@@ -10,12 +10,11 @@ const db = require('./database/db')
 const { User } = require('./models/usuarios');
 const app = express () 
 
+db()
+
 app.use(cors())
 app.use (express.json())
 app.use(express.urlencoded({extended:false}))
-
-
-
 
 
 // Add headers before the routes are defined
@@ -57,7 +56,6 @@ app.use(( error , req , res , next  )=>{
 
 app.listen(3000, () => {
     console.log(`Iniciando el server`)
-    db()
 }) 
 
 module.exports = app;
