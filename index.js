@@ -15,7 +15,7 @@ app.use (express.json())
 app.use(express.urlencoded({extended:false}))
 
 
-const { User } = require('../models/usuarios');
+const { User } = require('./models/usuarios');
 
 
 // Add headers before the routes are defined
