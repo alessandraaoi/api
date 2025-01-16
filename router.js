@@ -1,6 +1,6 @@
 const express = require('express')
 const { login } = require('./controllers/login')
-const { getUser } = require('./controllers/getUser')
+const { getUser, todosUsers } = require('./controllers/getUser')
 const { getAnuncios } = require('./controllers/getAnuncios')
 const { postAnuncio } = require('./controllers/postAnuncio')
 const { getAnuncioById, getAnuncioByAnuncioId } = require('./controllers/getAnuncioById')
@@ -9,6 +9,8 @@ const { deleteAnuncio } = require('./controllers/deleteAnuncio')
 const router = express.Router()
 const cors = require ('cors')
 
+router.route('/')
+.get(todosUsers)
 
 router.route('/login', cors())
 .post(login)

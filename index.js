@@ -7,7 +7,7 @@ const mongoose = require ('mongoose')
 const {router} = require ('./router')
 // importo la conexión a mi base de datos en MONGODB
 const db = require('./database/db')
-
+const { User } = require('./models/usuarios');
 const app = express () 
 
 app.use(cors())
@@ -15,7 +15,7 @@ app.use (express.json())
 app.use(express.urlencoded({extended:false}))
 
 
-const { User } = require('./models/usuarios');
+
 
 
 // Add headers before the routes are defined
@@ -37,13 +37,6 @@ const { User } = require('./models/usuarios');
 //     // Pass to next layer of middleware
 //     next();
 // });
-
-
-app.get('/', async (req, res) => {
-
-    const buscar = await User.find()
-    res.json(buscar);
-})
 
 app.use(router)
 

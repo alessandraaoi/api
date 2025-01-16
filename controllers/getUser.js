@@ -28,4 +28,16 @@ const getUser = async (req, res, next) => {
   
 }
 
-module.exports = {getUser};
+const todosUsers = async (req, res, next) => {
+    try {
+
+        const buscar = await User.find()
+        res.status(200).json(buscar)
+
+    } catch (error) {
+        console.log(error)
+        next()
+    }
+}
+
+module.exports = {getUser, todosUsers};
