@@ -1,13 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const db = async () => {
-    await mongoose.connect(process.env.URL_MONGO_ATLAS || 'mongodb+srv://alexxandraoix3:ale@cluster0.bkvenvv.mongodb.net/Proyecto')
-    .catch(error => {console.log('Error Mongo' + error)})
-}
+  // guardo URL de Mongo Compass localhost:27017
+  await mongoose
+    .connect(
+      process.env.URL_MONGO_ATLAS || "mongodb://localhost:27017/proyecto"
+    )
+    .catch((error) => {
+      console.log("Error Mongo" + error);
+    });
+};
 
-const connection = mongoose.connection; 
+const connection = mongoose.connection;
 
-connection.once('open', () => console.log('Connected to Mongo'))
-connection.on('error', (err) => console.log('Error to connect: ' + (err)))
+connection.once("open", () => console.log("Conexión con MongoDB OK"));
+connection.on("error", (err) => console.log("Error de conexión: " + err));
 
-module.exports = db; 
+module.exports = db;

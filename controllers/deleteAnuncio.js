@@ -1,33 +1,29 @@
 // ELIMINAR ANUNCIO (DELETE)
 
-const {Anuncio} = require('../models/anuncios')
-
+const { Anuncio } = require("../models/anuncios");
 
 const deleteAnuncio = async (req, res, next) => {
-    try {
-        const {idAnuncio} = req.params
+  try {
+    const { idAnuncio } = req.params;
 
-        await Anuncio.findByIdAndDelete(idAnuncio)
+    await Anuncio.findByIdAndDelete(idAnuncio);
 
-        // devuelve Array actualizado con el dato eliminado
-        const buscar = await Anuncio.find()
+    // devuelve Array actualizado con el dato eliminado
+    const buscar = await Anuncio.find();
 
-        res.status(200).json(buscar)
+    res.status(200).json(buscar);
 
-        console.log(idAnuncio, 'anuncio eliminado ok');
-        
+    console.log(idAnuncio, "anuncio eliminado ok");
+  } catch (error) {
+    console.log(error);
 
-    } catch (error) {
-        console.log(error);
-        
-        next();
-        
-    }
-}
+    next();
+  }
+};
 
 module.exports = {
-    deleteAnuncio
-}
+  deleteAnuncio,
+};
 
 // app.delete ('/gestor/id/:_id', (req, res, next) => {
 //     try {
@@ -39,8 +35,8 @@ module.exports = {
 //         res.status(200).json(users)
 //     } catch (error) {
 //         console.log(error);
-        
+
 //         next();
-        
+
 //     }
 // })

@@ -1,26 +1,25 @@
 // MODELO, SCHEMA DE ANUNCIO
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const anuncioSchema = new mongoose.Schema ({
-
+const anuncioSchema = new mongoose.Schema(
+  {
     title: {
-        type: String
+      type: String,
     },
     description: {
-        type: String
+      type: String,
     },
     userid: {
-        type: String
-    }
-}, {collection: 'anuncios'})
+      type: String,
+    },
+  },
+  { collection: "anuncios" }
+);
 
-const Anuncio = mongoose.model('Anuncio', anuncioSchema)
+const Anuncio = mongoose.model("Anuncio", anuncioSchema);
 
-// exporto 
+// exporto
 module.exports = {
-    Anuncio
-}
-
-
-
+  Anuncio,
+};

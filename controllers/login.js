@@ -1,11 +1,11 @@
 // CONTROLLER: LOGIN (POST)
 
-const { User } = require('../models/usuarios');
+const { User } = require("../models/usuarios");
 
 const login = async (req, res, next) => {
   try {
     const { correo, password } = req.body;
-    
+
     await User.findOne({ correo: correo, password: password }).then((user) => {
       if (!user) {
         return res.json({
@@ -14,13 +14,11 @@ const login = async (req, res, next) => {
         });
       }
 
-      
       console.log(password === user.password);
       if (password === user.password) {
-     
         const { _id, nombre } = user;
         return res.json({
-          mensaje: "Usuario logeado correctamente",
+          mensaje: "Login OK",
           user: { _id, nombre },
         });
       } else {
@@ -31,9 +29,9 @@ const login = async (req, res, next) => {
       }
     });
   } catch (error) {
-    console.log(error)
-        next()
+    console.log(error);
+    next();
   }
 };
 
-module.exports = {login};
+module.exports = { login };
